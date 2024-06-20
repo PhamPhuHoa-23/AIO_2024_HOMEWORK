@@ -50,14 +50,14 @@ def rmse(n: int, predict_values: list[float], target_values: list[float]) -> Non
 def loss_function(n: str, loss_function_name: str):
     if n.isnumeric():
         n = int(n)
-        loss_function_name = loss_function_name.lower()
     else:
         sys.exit("number of samples must be an integer number")
+
+    loss_function_name = loss_function_name.lower()
 
     # GENERATE PREDICT AND TARGET VALUE
     predict_values = [random.uniform(a=0, b=10) for _ in range(n)]
     target_values = [random.uniform(a=0, b=10) for _ in range(n)]
-
 
     if loss_function_name == "mae":
         mae(n=n, predict_values=predict_values, target_values=target_values)
