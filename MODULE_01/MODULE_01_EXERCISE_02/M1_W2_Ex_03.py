@@ -1,4 +1,4 @@
-def count_words_in_paragraph(filepath: str):
+def count_words_in_paragraph(filepath: str) -> dict:
     with open(filepath, mode="r", encoding="utf-8") as file:
         all_words = file.read().split()
 

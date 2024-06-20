@@ -5,31 +5,38 @@ import sys
 ALPHA = 0.01
 ACTIVATION_FUNCTIONS = ["sigmoid", "relu", "elu"]
 
+
 def is_decimal(var):
     try:
         float(var)
     except ValueError:
-        return  False
-
+        return False
     return True
+
 
 def sigmoid(x: float) -> float:
     return 1 / (1 + math.exp(-x))
 
 
 def relu(x: float) -> float:
-    if x <= 0: return 0
-    else: return x
+    if x <= 0:
+        return 0
+    else:
+        return x
 
 
 def elu(x: float) -> float:
-    if x <= 0: return ALPHA * (math.exp(x) - 1)
-    else: return x
+    if x <= 0:
+        return ALPHA * (math.exp(x) - 1)
+    else:
+        return x
 
 
 def f(x, activation_function: str):
-    if not is_decimal(x): sys.exit(" x must be a number")
-    else: x = float(x)
+    if not is_decimal(x):
+        sys.exit(" x must be a number")
+    else:
+        x = float(x)
 
     if activation_function.lower() not in ACTIVATION_FUNCTIONS:
         sys.exit(f"{activation_function} is not supported")

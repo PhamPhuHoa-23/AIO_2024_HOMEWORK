@@ -1,4 +1,4 @@
-def sub(source, target):
+def sub(source, target) -> int:
     if target == source: return 0
     else: return 1
 
@@ -29,3 +29,5 @@ def levenshtein_distance(source: str, target: str) -> int:
 if __name__ == '__main__':
     print(levenshtein_distance(source="yu", target="you"))
     print(levenshtein_distance(source="kitten", target="sitting"))
+    print(levenshtein_distance(source="hi", target="hello"))
+    print(levenshtein_distance(source="hola", target="hello"))

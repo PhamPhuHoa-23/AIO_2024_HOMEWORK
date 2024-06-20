@@ -1,5 +1,6 @@
 import sys
 
+
 def is_interger(var):
     try:
         if int(var) != var:
@@ -8,16 +9,23 @@ def is_interger(var):
     except ValueError:
         return False
 
+
 def evaluate_model(tp: int, fp: int, fn: int) -> None:
     # CHECK TYPE OF VARIABLES
-    if not is_interger(tp): sys.exit("TP must be int!")
-    if not is_interger(fp): sys.exit("FP must be int!")
-    if not is_interger(fn): sys.exit("FN must be int!")
+    if not is_interger(tp):
+        sys.exit("TP must be int!")
+    if not is_interger(fp):
+        sys.exit("FP must be int!")
+    if not is_interger(fn):
+        sys.exit("FN must be int!")
 
     # VALIDATION VARIABLE VALUES
-    if tp <= 0: sys.exit("TP must be greater than 0")
-    if fp <= 0: sys.exit("FP must be greater than 0")
-    if fn <= 0: sys.exit("FN must be greater than 0")
+    if tp <= 0:
+        sys.exit("TP must be greater than 0")
+    if fp <= 0:
+        sys.exit("FP must be greater than 0")
+    if fn <= 0:
+        sys.exit("FN must be greater than 0")
 
     # PROCESSING
     precision = tp / (tp + fp)
@@ -26,6 +34,7 @@ def evaluate_model(tp: int, fp: int, fn: int) -> None:
     print(f"Precision is {precision:2f}")
     print(f"Recall is {recall:2f}")
     print(f"F1-Score is {f1_score:2f}")
+
 
 # Unit test
 if __name__ == '__main__':

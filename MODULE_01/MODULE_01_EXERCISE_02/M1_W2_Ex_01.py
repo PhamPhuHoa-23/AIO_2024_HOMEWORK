@@ -8,4 +8,4 @@ def max_in_slicing_with_k_element(num_lst: list, k: int):
 
 if __name__ == '__main__':
     num_lst = [3, 4, 5, 1, -44, 5, 10, 12, 33, 1]
-    print(max_in_slicing_with_k_element(num_lst, 3))
+    print(max_in_slicing_with_k_element(num_lst=num_lst, k=3))

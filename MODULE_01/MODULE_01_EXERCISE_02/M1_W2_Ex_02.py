@@ -1,4 +1,4 @@
-def count_char_in_word(word: str):
+def count_char_in_word(word: str) -> dict:
     count_chars = {}
     for letter in word:
         count_chars[letter] = count_chars.get(letter, 0) + 1
