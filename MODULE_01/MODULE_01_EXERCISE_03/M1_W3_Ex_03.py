@@ -9,11 +9,13 @@ class MyStack:
     def set_capacity(self, new_capacity: int): self.__capacity = new_capacity
 
     def is_empty(self):
-        if self.__length__ == 0: return True
+        if self.__length__ == 0:
+            return True
         return False
 
     def is_full(self):
-        if self.__length__ == self.get_capacity(): return True
+        if self.__length__ == self.get_capacity():
+            return True
         return False
 
     def pop(self):
