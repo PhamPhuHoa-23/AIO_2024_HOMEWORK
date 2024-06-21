@@ -1,24 +1,25 @@
 import torch
-from math import exp
 
 
 class Softmax(torch.nn.Module):
-    def forward(self, tensor_lst: torch.Tensor) -> torch.t:
-        total = 0
-        for x in tensor_lst:
-            total += exp(x)
+    def __init__(self):
+        super().__init__()
 
-        return torch.Tensor([exp(x) / total for x in tensor_lst])
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x_exp = torch.exp(x)
+        partition = x_exp.sum()
+        return x_exp / partition
 
 
 class SoftmaxStable(torch.nn.Module):
-    def forward(self, tensor_lst: torch.Tensor):
-        c = tensor_lst.max()
-        total = 0
-        for x in tensor_lst:
-            total += exp(x - c)
+    def __init__(self):
+        super().__init__()
 
-        return torch.Tensor([exp(x - c) / total for x in tensor_lst])
+    def forward(self,  x: torch.Tensor):
+        x_max = torch.max(x, dim=0, keepdim=True)
+        x_exp = torch.exp(x - x_max.values)
+        partition = x_exp.sum(0, keepdim=True)
+        return x_exp / partition
 
 
 if __name__ == '__main__':
@@ -31,3 +32,7 @@ if __name__ == '__main__':
     softmax_stable = SoftmaxStable()
     output = softmax_stable(data)
     print(output)  # tensor([0.0900, 0.2447, 0.6652])
+
+    data = torch.Tensor([1, 2, 300000000])
+    output = softmax(data)
+    print(output)
