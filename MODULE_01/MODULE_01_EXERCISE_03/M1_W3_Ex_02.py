@@ -1,15 +1,7 @@
 class Person:
     def __init__(self, name: str, yob: int):
-        self.__name = name
-        self.__yob = yob
-
-    def get_name(self): return self.__name
-
-    def set_name(self, new_name: str): self.__name = new_name
-
-    def get_yob(self): return self.__yob
-
-    def set_yob(self, new_yob: int): self.__yob = new_yob
+        self._name = name
+        self._yob = yob
 
 
 class Student(Person):
@@ -18,12 +10,8 @@ class Student(Person):
 
         self.__grade = grade
 
-    def get_grade(self): return self.__grade
-
-    def set_grade(self, new_grade: str): self.__grade = new_grade
-
     def describe(self):
-        print(f"Student - Name: {self.get_name()}, YoB: {self.get_yob()}, Grade: {self.get_grade()}")
+        print(f"Student - Name: {self._name}, YoB: {self._yob}, Grade: {self.__grade}")
 
 
 class Teacher(Person):
@@ -32,12 +20,8 @@ class Teacher(Person):
 
         self.__subject = subject
 
-    def get_subject(self): return self.__subject
-
-    def set_subject(self, new_subject: str): self.__subject = new_subject
-
     def describe(self):
-        print(f"Teacher - Name: {self.get_name()}, YoB: {self.get_yob()}, Subject: {self.get_subject()}")
+        print(f"Teacher - Name: {self._name}, YoB: {self._yob}, Subject: {self.__subject}")
 
 
 class Doctor(Person):
@@ -46,12 +30,8 @@ class Doctor(Person):
 
         self.__specialist = specialist
 
-    def get_specialist(self): return self.__specialist
-
-    def set_specialist(self, new_specialist): self.__specialist = new_specialist
-
     def describe(self):
-        print(f"Doctor - Name: {self.get_name()}, YoB: {self.get_yob()}, Specialist: {self.get_specialist()}")
+        print(f"Doctor - Name: {self._name}, YoB: {self._yob}, Specialist: {self.__specialist}")
 
 
 class Ward:
@@ -77,18 +57,20 @@ class Ward:
         return count
 
     def sort_age(self):
-        self.__population.sort(key=lambda x: x.get_yob(), reverse=True)
+        self.__population.sort(key=lambda x: x._yob, reverse=True)
 
     def compute_average(self):
         yob_average = 0
         teacher_count = 0
         for person in self.get_population():
             if type(person) is Teacher:
-                yob_average += person.get_yob()
+                yob_average += person._yob
                 teacher_count += 1
 
-        try: return yob_average / teacher_count
-        except ZeroDivisionError: return 0
+        try:
+            return yob_average / teacher_count
+        except ZeroDivisionError:
+            return 0
 
 
 # Unit test
