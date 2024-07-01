@@ -35,4 +35,4 @@ if __name__ == '__main__':
 
     data = torch.Tensor([1, 2, 300000000])
     output = softmax(data)
-    print(output)
+    print(output)  # tensor([0., 0., Nan])

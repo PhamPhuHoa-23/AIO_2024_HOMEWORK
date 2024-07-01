@@ -1,7 +1,14 @@
+from abc import ABC, abstractmethod
+
+
 class Person:
     def __init__(self, name: str, yob: int):
         self._name = name
         self._yob = yob
+
+    @abstractmethod
+    def describe(self):
+        pass
 
 
 class Student(Person):
