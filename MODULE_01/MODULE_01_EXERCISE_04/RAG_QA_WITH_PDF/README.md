@@ -30,3 +30,12 @@ To install the required packages, you can use:
 
 ```bash
 pip install -r requirements.txt
+```
+
+# Usage
+
+To run the RAG QA system(if you have GPU), use the following command:
+
+```bash
+chainlit run app.py --host 0.0.0.0 --port 8000 &>/content/logs.txt &
+```
