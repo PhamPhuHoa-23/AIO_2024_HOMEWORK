@@ -71,7 +71,7 @@ print(f'Total Sales: {total}')
 sales_df = data[:, 3]
 sales_mean = sales_df.mean()
 
-scores = np.full(shape=sales_df.shape, fill_value="Good")
+scores = np.full(shape=sales_df.shape, fill_value="Bad")
 
 scores[sales_df > sales_mean] = "Good"
 scores[sales_df == sales_mean] = "Average"
